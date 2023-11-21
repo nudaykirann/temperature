@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body{
+            padding: 50px 100px; 
+            background-image: url(nature.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size:100%;
+            position:static;
+            height: 100%;
+    
+        }
+        h1{
+            text-align: center;
+            color: rgb(20, 220, 67);
+        }
+        #container{
+            text-align: center; 
+            padding: 50px;
+
+        }
+       .inp{
+            padding: 5px;
+            margin: 10px;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+        }
+        label{
+            font-size: 20px;
+            font-weight: bold;
+            color: rgb(165, 42, 52);
+        }
+        
+    </style>
+</head>
+<body> 
+<h1>Temperature Converter</h1>
+<div id="container">
+    <div class="input-div">
+        <label>Celsius</label><br>
+        <input type="number" value="0" id="cel" class="inp">
+    </div>
+<div class="input-div"></div>
+        <label>Fahrenheit</label><br>
+        <input type="number" value="32" id="fah" class="inp">
+        <div class="input-div">
+            <label>Kelvin</label><br>
+            <input type="number" value="273.15" id="kel" class="inp">
+             </div>
+    </div>
+
+    <script>
+        var cel = document.getElementById("cel");
+var fah = document.getElementById("fah");
+var kel = document.getElementById("kel");
+//celusius  to fahreheit and kelvin
+cel.addEventListener('input' , function(){
+    var c = parseFloat(cel.value)
+    let f = (c * 9/5) + 32;
+    let k= c+273.15;
+    if(!Number.isInteger(f)){
+        f=f.toFixed(4);
+        k=k.toFixed(4);
+    }
+    fah.value = f;
+    kel.value = k;
+});
+// fahrenheit to celcius and kelvin
+fah.addEventListener('input',function(){
+    let f = parseFloat(fah.value);
+    let c = (f - 32) * 5/9;
+    let k= (f - 32) * 5/9 +273.15;
+    if(!Number.isInteger(c)){
+     c= c.toFixed(4)
+     k=k.toFixed(4)
+    }
+    cel.value = c;
+    kel.value = k;
+});
+//kelvin to celcius and fahrenheit
+kel.addEventListener('input',function(){
+    let k = parseFloat(kel.value);
+    let c = k-273.15;
+    let f =  (k - 273.15) * 9/5 + 32;
+    if(!Number.isInteger(k)){
+     c= c.toFixed(4)
+     f=f.toFixed(4)
+    }
+    cel.value= c;
+    fah.value= f;
+});
+    </script>
+    
+</body>
+</html>
